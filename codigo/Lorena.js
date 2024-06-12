@@ -131,13 +131,13 @@ function imprimeDados() {
     ong.o_que_doar.forEach(item => { oqDoar.innerHTML += `<li><p>${item}</p></li>` })
 }
 
-// Adiciona evento de carregamento da página para exibir os dados da ONG
+
 window.addEventListener('load', () => {
     imprimeDados();
     imprimeComentarios();
 });
 
-// Adiciona evento de envio do formulário de comentários
+
 document.getElementById('comentarioForm').addEventListener('submit', function (event) {
     event.preventDefault();
 
@@ -148,7 +148,7 @@ document.getElementById('comentarioForm').addEventListener('submit', function (e
         adicionaComentario(nome, comentario);
         imprimeComentarios();
 
-        // Limpar os campos do formulário
+        
         document.getElementById('nome').value = '';
         document.getElementById('comentario').value = '';
     }
