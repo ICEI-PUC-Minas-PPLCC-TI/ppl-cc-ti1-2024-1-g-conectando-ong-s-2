@@ -1,0 +1,174 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: whitesmoke;
+    box-shadow: 1px 1px 4px 4px lightgrey;
+}
+
+.imgcapa {
+    width: 100%;
+    box-shadow: 1px 1px 4px 4px lightgrey;
+}
+
+hr {
+    margin: 0;
+    padding: 0;
+}
+
+.logosite img {
+    width: 100px;
+    height: auto;
+}
+
+h1, h2, h3, h4, h5 {
+    margin: 0;
+}
+
+.Logo img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+    border-style: inset;
+    border-color: aqua;
+}
+
+.Voltar a {
+    color: black;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    background-color: whitesmoke;
+}
+
+.sobre h1 {
+    margin-bottom: 20px;
+}
+
+.infos h1 {
+    text-align: center;
+}
+
+.oqd h1 {
+    text-align: center;
+}
+
+.Voltar a:hover {
+    background-color: lightblue;
+}
+
+.ong-info {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+.ong-info .sobre p {
+    width: 500px;
+    word-wrap: break-word;
+}
+
+.oqd-caixa {
+    padding: 20px;
+}
+
+.info-caixa {
+    padding: 20px;
+}
+
+.infos2 {
+    padding: 20px;
+    margin-left: 100px;
+}
+
+.infos2 strong {
+    color: rgb(37, 151, 151);
+}
+
+.L, .H, .C {
+    padding: 10px;
+}
+
+.C .redes {
+    display: inline;
+}
+
+.C li a {
+    color: black;
+    text-decoration: none;
+}
+
+.doacoes {
+    padding: 30px;
+    margin-left: 100px;
+}
+
+.botao a {
+    color: black;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    background-color: aqua;
+}
+
+.botao a:hover {
+    background-color: lightblue;
+}
+
+.botao li {
+    margin-left: 15px;
+}
+
+footer {
+    background-color: whitesmoke;
+    box-shadow: 1px 1px 4px 4px lightgrey;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+    text-decoration: none;
+}
+
+footer a {
+    color: black;
+    text-decoration: none;
+}
+
+.comentarios-caixa {
+    padding: 20px;
+}
+
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-apagar {
+    color: red;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+@media (max-width: 940px) {
+    .ong-info {
+        flex-direction: column;
+        justify-content: center;
+    }
+}
