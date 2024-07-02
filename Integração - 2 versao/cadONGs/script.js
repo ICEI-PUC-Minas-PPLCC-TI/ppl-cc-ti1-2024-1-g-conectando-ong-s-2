@@ -1,41 +1,55 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const form = document.querySelector('form');
-    const header = document.querySelector("header");
+    const form = document.getElementById('form');
 
     form.addEventListener('submit', async function(event) {
-        event.preventDefault();
+        event.preventDefault(); // Impede o envio padrão do formulário
         
         const formData = new FormData(form);
 
         // Captura dos dados do formulário
-        const nomeONG = document.getElementById('InputNome').value;
-        const email = document.getElementById('InputEmail').value;
-        const logomarca = document.querySelector('input[type="file"]').value;
-        const horarioFuncionamento = document.querySelector('input[type="horario"]').value;
-        const categoria = document.getElementById('categoria').value;
-        const pixDoacoes = document.querySelector('input[type="text"]').value;
-        const contatosRedesSociais = document.querySelector('input[name="contatosRedesSociais"]').value;
-        const oQueDoar = document.querySelector('input[type="doacao"]').value;
-        const sobreONG = document.querySelector('textarea[name="sobreONG"]').value;
+        const name = formData.get('name');
+        const category = formData.get('category');
+        const logoFile = formData.get('logo'); // Arquivo de logomarca
+        const city = formData.get('city');
+        const neighborhood = formData.get('neighborhood');
+        const street = formData.get('street');
+        const mapUrl = formData.get('mapUrl');
+        const time = formData.get('time');
+        const donations = formData.get('donations');
+        const pix = formData.get('pix');
+        const caixaPostal = formData.get('caixa_postal');
+        const contact = formData.get('contact');
+        const whatsapp = formData.get('whatsapp');
+        const email = formData.get('email');
+        const instagram = formData.get('instagram');
+        const description = formData.get('description');
 
-        // Exemplo de como mostrar os dados capturados
-        console.log('Nome da ONG:', nomeONG);
+        // Exemplo de como mostrar os dados capturados no console
+        console.log('Nome da ONG:', name);
+        console.log('Categoria da ONG:', category);
+        console.log('Logomarca da ONG:', logoFile);
+        console.log('Cidade:', city);
+        console.log('Bairro:', neighborhood);
+        console.log('Rua/Número:', street);
+        console.log('Endereço pelo Google Maps:', mapUrl);
+        console.log('Horário de Funcionamento:', time);
+        console.log('O que doar:', donations);
+        console.log('PIX para doações:', pix);
+        console.log('Caixa Postal:', caixaPostal);
+        console.log('Telefone para contato:', contact);
+        console.log('Whatsapp:', whatsapp);
         console.log('Email:', email);
-        console.log('Logomarca da ONG:', logomarca);
-        console.log('Horário de Funcionamento:', horarioFuncionamento);
-        console.log('Categoria da ONG:', categoria);
-        console.log('PIX para doações:', pixDoacoes);
-        console.log('Contatos e Redes Sociais:', contatosRedesSociais);
-        console.log('O que doar:', oQueDoar);
-        console.log('Sobre a ONG:', sobreONG);
+        console.log('Instagram:', instagram);
+        console.log('Sobre a ONG:', description);
 
+
+        // Exibe alerta de sucesso
         alert('Dados enviados com sucesso!');
 
-        // Recarrega a página
+        // Recarrega a página (remova se não for necessário)
         window.location.reload();
     });
 });
-
 /*document.addEventListener("DOMContentLoaded", function() {
     const form = document.getElementById('form');
 
