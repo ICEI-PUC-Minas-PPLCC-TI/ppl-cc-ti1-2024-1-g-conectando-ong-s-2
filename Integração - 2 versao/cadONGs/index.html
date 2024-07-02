@@ -39,23 +39,11 @@
     <form class="form" id="form">
       <div class="campo">
         <label>Nome da ONG</label>
-        <input type="nome" class="form-control" id="InputNome" name="nomeONG" required>
-      </div>
-      <div class="campo">
-        <label>Email</label>
-        <input type="email" class="form-control" id="InputEmail" name="email" required>
-      </div>
-      <div class="campo">
-        <label>Logomarca da ONG</label>
-        <input type="file" class="form-control" name="logomarca" aria-label="file example" required>
-      </div>
-      <div class="campo">
-        <label>Horário de funcionamento</label>
-        <input type="horario" class="form-control" name="horarioFuncionamento" required>
+        <input type="text" class="form-control" id="InputName" name="name" required>
       </div>
       <div class="campo">
         <label>Categoria da ONG</label>
-        <select name="categoria" id="categoria">
+        <select name="category" id="categoria">
           <option disabled selected>Selecionar</option>
           <option>Pessoas em vulnerabilidade social</option>
           <option>PCDs</option>
@@ -65,20 +53,71 @@
         </select>
       </div>
       <div class="campo">
-        <label>PIX para doações</label>
-        <input type="text" class="form-control" name="pixDoacoes" required>
+        <label>Logomarca da ONG</label>
+        <input type="file" class="form-control" name="logo" aria-label="file example" required>
+      </div>
+      
+      <div class="campo">
+        <label>Cidade</label>
+        <input type="text" class="form-control" name="city" required>
       </div>
       <div class="campo">
-        <label>Contatos e Redes socias</label>
-        <input type="text" class="form-control" name="contatosRedesSociais" required>
+        <label>Bairro</label>
+        <input type="text" class="form-control" name="neighborhood" required>
       </div>
+      <div class="campo">
+        <label>Rua/Número</label>
+        <input type="text" class="form-control" name="street" placeholder="  Ex: Rua das Flores, 345" required>
+      </div>
+
+      <div class="campo">
+        <label>Endereço pelo Google Maps</label>
+        <input type="text" class="form-control" name="mapUrl" placeholder="  Ex: https://maps.app.goo.gl" required>
+      </div>
+
+      <div class="campo">
+        <label>Horário de funcionamento</label>
+        <input type="text" class="form-control" name="time" placeholder="  Ex: Segundas as sextas 08:00 - 17:00" required>
+      </div>
+      
       <div class="campo">
         <label>O que doar</label>
-        <input type="doacao" class="form-control" name="oQueDoar">
+        <input type="text" class="form-control" name="donations" placeholder="  Ex: Ração, Cobertores, Brinquedos" required>
       </div>
+
+      <div class="campo">
+        <label>PIX para doações</label>
+        <input type="text" class="form-control" name="pix">
+      </div>
+
+      <div class="campo">
+        <label>Caixa postal</label>
+        <input type="text" class="form-control" name="caixa_postal">
+      </div>
+
+      <div class="campo">
+        <label>Telefone para contato</label>
+        <input type="text" class="form-control" name="contact" placeholder="  Ex: (31) 99999-9999" required>
+      </div>
+
+      <div class="campo">
+        <label>Whatsapp</label>
+        <input type="text" class="form-control" name="whatsapp">
+      </div>
+
+      <div class="campo">
+        <label>Email</label>
+        <input type="text" class="form-control" name="email" placeholder="  Ex: email@provedor.com.br">
+      </div>
+
+      <div class="campo">
+        <label>Instagram</label>
+        <input type="text" class="form-control" name="instagram" placeholder="  Anexe o link do perfil da ONG">
+      </div>
+
       <div class="campo">
         <label style="margin-top: 15px;">Sobre a ONG:</label>
-        <textarea name="sobreONG" style="width: 24em; height: 8em;"></textarea>
+        <textarea name="description" style="width: 24em; height: 8em;"></textarea>
       </div>
       <button type="submit" class="botao">Enviar</button>
     </form>
