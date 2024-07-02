@@ -9,7 +9,7 @@ function filterOngs() {
     .then(response => response.json())
     .then(data => {
       const filteredOngs = data.ongs.filter(ong => {
-        const fullLocation = `${ong.street}, ${ong.neighborhood}, ${ong.location}, ${ong.number}`.toLowerCase();
+        const fullLocation = `${ong.location.street}, ${ong.location.neighborhood}, ${ong.location.city}`.toLowerCase();
         return ong.name.toLowerCase().includes(name) &&
                fullLocation.includes(location) &&
                ong.donations.some(d => d.toLowerCase().includes(donation)) &&
@@ -30,7 +30,7 @@ function displayOngs(ongs) {
       <tr>
         <td><img src="${ong.logo}" alt="${ong.name} Logo" style="max-width: 100px;"></td>
         <td><a href="${ong.url}" target="_blank">${ong.name}</a></td>
-        <td><a href="${ong.mapUrl}" target="_blank">${ong.location}</a></td>
+        <td><a href="${ong.location.mapUrl}" target="_blank">${ong.location.city}</a></td>
         <td>${ong.category}</td>
         <td>${ong.donations.join(', ')}</td>
       </tr>
