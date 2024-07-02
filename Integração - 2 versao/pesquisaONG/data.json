@@ -2,32 +2,28 @@
   "ongs": [
     {
       "id": 1,
-      "name": "AmoAnimais",
-      "description": "NGO focused on animal rights and welfare.",
+      "name": "Ame um Animal",
+      "description": "Nossa ONG tem como objetivo ajudar animais em situação de rua",
+      "logo": "ong2.jpeg",
       "category": "Animais",
-      "location": "Belo Horizonte",
-      "neighborhood": "Savassi",
-      "street": "Sergipe",
-      "number": "101",
-      "donations": ["Dinheiro", "Alimentos", "Medicamentos"],
-      "logo": "https://example.com/logo1.png",
-      "mapUrl": "https://www.google.com.br/maps/place/PUC+Minas+-+Ed.+Fernanda+-+Prédio+4/@-19.9336177,-43.9362488,18.5z/data=!4m9!1m2!2m1!1spucminas!3m5!1s0xa699dcfc943a3b:0x97ae94fc166049d0!8m2!3d-19.9324869!4d-43.9361052!16s%2Fg%2F11clvvxt89?entry=ttu",
-      "url": "http://127.0.0.1:5500/Trabalho%20TI%20pagina%20ONGs/Lorena.html"
-    },
-    {
-      "id": 2,
-      "name": "AmoNatureza",
-      "description": "NGO dedicated to environmental conservation.",
-      "category": "Ambiental",
-      "location": "Belo Horizonte",
-      "neighborhood": "Coração Eucarístico",
-      "street": "Av. Dom José Gaspar",
-      "number": "500",
-      "donations": ["Dinheiro", "Materiais de Limpeza"],
-      "logo": "https://example.com/logo2.png",
-      "mapUrl": "https://www.google.com.br/maps/place/Pontifícia+Universidade+Católica+de+Minas+Gerais+-+Coração+Eucarístico/@-19.9228622,-43.9942792,18z/data=!4m10!1m2!2m1!1spucminas!3m6!1s0xa696fabcd470ed:0x79ebb3d3cea6b4ea!8m2!3d-19.9228622!4d-43.992595!15sCghwdWNtaW5hcyIDiAEBkgEScHJpdmF0ZV91bml2ZXJzaXR54AEA!16s%2Fg%2F1q2w3pg9h?entry=ttu",
-      "url": "http://127.0.0.1:5500/Trabalho%20TI%20pagina%20ONGs/Lorena.html"
+      "location": {
+        "city": "Belo Horizonte",
+        "neighborhood": "Savassi",
+        "street": "Sergipe, 101",
+        "mapUrl": "https://www.google.com/maps/search/?api=1&query=Sergipe,101,Savassi,Belo Horizonte"
+      },
+      "time": "Segundas a sextas das 8h às 18h",
+      "contact": {
+        "phone": "(31) 98457-7640",
+        "whatsapp": "https://wa.me/553184577640",
+        "instagram": "@ame_um_animal_ONG",
+        "email": "email@provedor.com.br"
+      },
+      "donations": ["Ração", "Cobertores", "Brinquedos"],
+      "other_donations": {
+        "pix": "123456789",
+        "caixa_postal": "PO Box 123"
+      }
     }
   ]
 }
-
