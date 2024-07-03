@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -14,6 +13,9 @@ body {
     overflow-x: hidden;
     padding: 0;
     margin: 0 auto !important;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
 }
 
 body::-webkit-scrollbar {
@@ -21,7 +23,7 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-   background: #bebebe;
+    background: #bebebe;
 }
 
 body::-webkit-scrollbar-thumb {
@@ -53,87 +55,6 @@ body::-webkit-scrollbar-thumb {
     font-family: monospace;
 }
 
-.principal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    background-image: url('images/Homeless man.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-}
-
-.principal::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.2);
-}
-
-.conteudo {
-    color: rgb(0, 0, 0);
-    position: relative;
-    text-align: center;
-    z-index: 2;
-}
-
-.formulario-pesquisa {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.formulario-pesquisa input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    outline: none;
-}
-
-.formulario-pesquisa button {
-    padding: 10px 25px;
-    background: black;
-    color: #fbfcfd;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-}
-
-.botao-filtro {
-    background: black;
-    color: #fbfcfd;
-    border: none;
-    padding: 10px 25px;
-    border-radius: 20px;
-    cursor: pointer;
-}
-
-.filtros select {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background: #fff;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    font-size: 1em;
-    color: #333;
-    cursor: pointer;
-    width: 100%;
-    max-width: 250px;
-}
-
-a {
-    text-decoration: none;
-}
-
 .navegacao a {
     position: relative;
     font-size: 1.5em;
@@ -162,11 +83,89 @@ a {
     transform: scaleX(1);
 }
 
+.principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 120px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex: 1;
+}
+
+.conteudo {
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.formulario-pesquisa {
+    margin: 20px 0;
+}
+
+.formulario-pesquisa input, .formulario-pesquisa select, .formulario-pesquisa button {
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.botao-filtro {
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.botao-filtro:hover {
+    background-color: #444;
+}
+
+.botao-pesquisa {
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.botao-pesquisa:hover {
+    background-color: #444;
+}
+
+.filtros {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lista-voluntarios {
+    list-style: none;
+    padding: 0;
+}
+
+.perfil {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    margin: 20px 0;
+}
+
 .rodape {
     text-align: center;
     padding: 20px;
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
+    width: 100%;
+    margin-top: auto;
 }
 
 @media (max-width: 1250px) {
