@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="cabecalho">
+        <h2 class="logo">Conexão Solidária</h2>
+        <nav class="navegacao">
+            <a href="../cadLog/index.html">Para usuários</a>
+            <a href="../cadONGs/index.html">Para ONGs</a>
+            <a href="../cadVoluntarios/index.html">Para voluntários</a>
+            <a href="../cadLog/dúvidas/duvidas.html">Dúvidas Comuns</a>
+        </nav>
+    </header>
+
+    <div class="principal">
+        <div class="conteudo">
+            <h1>Formas de Pagamento</h1>
+            <p>Escolha abaixo a forma de pagamento:</p>
+            <div class="opcoes-pagamento">
+                <div class="opcao-pagamento">
+                    <h2>Cartão de Crédito/Débito</h2>
+                    <p>Insira os dados do seu cartão para realizar o pagamento.</p>
+                    <form id="form-cartao" class="form-cartao" style="display: none;">
+                        <input type="text" placeholder="Número do Cartão" required>
+                        <input type="text" placeholder="Data de Validade" required>
+                        <input type="text" placeholder="CVV" required>
+                        <input type="text" placeholder="Nome do Titular" required>
+                        <input type="text" placeholder="CPF/CNPJ do Titular" required>
+                        <button class="botao-pagamento finalizar-cartao">Finalizar Pagamento</button>
+                        <button class="botao-pagamento cancelar-cartao" style="display: none;">Cancelar</button>
+                    </form>
+                    <button class="botao-pagamento pagar-cartao">Pagar com Cartão</button>
+                </div>
+                <div class="opcao-pagamento">
+                    <h2>PIX</h2>
+                    <p>Realize o pagamento utilizando PIX.</p>
+                    <form id="form-pix" class="form-pix" style="display: none;">
+                        <input type="text" placeholder="Seu CPF/CNPJ" required>
+                        <br>
+                        <button class="botao-pagamento finalizar-pix">Finalizar Pagamento</button>
+                        <button class="botao-pagamento cancelar-pix" style="display: none;">Cancelar</button>
+                    </form>
+                    <button class="botao-pagamento pagar-pix">Pagar com PIX</button>
+                </div>
+                <div class="opcao-pagamento">
+                    <h2>Boleto Bancário</h2>
+                    <p>Gere um boleto bancário para efetuar o pagamento.</p>
+                    <form id="form-boleto" class="form-boleto" style="display: none;">
+                        <input type="text" placeholder="Seu CPF/CNPJ" required>
+                        <br>
+                        <button class="botao-pagamento finalizar-boleto">Finalizar Pagamento</button>
+                        <button class="botao-pagamento cancelar-boleto" style="display: none;">Cancelar</button>
+                    </form>
+                    <button class="botao-pagamento pagar-boleto">Gerar Boleto</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="rodape">
+        <p>&copy; Redes Sociais</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
