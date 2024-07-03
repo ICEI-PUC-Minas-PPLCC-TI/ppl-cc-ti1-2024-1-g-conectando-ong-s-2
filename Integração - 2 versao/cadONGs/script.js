@@ -26,9 +26,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Criar objeto com os dados capturados
         const formDataObj = {
+            id: new Date().getTime(), // Usando timestamp como ID único
             name: name,
             category: category,
-            logoFile: logoFile, // Aqui é um objeto File, que não pode ser serializado diretamente
             city: city,
             neighborhood: neighborhood,
             street: street,
@@ -46,14 +46,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Armazenar os dados no localStorage como JSON
         localStorage.setItem('formData', JSON.stringify(formDataObj));
-        
+
         // Exibe mensagem no console
         console.log('Dados enviados com sucesso:', formDataObj);
 
         // Exibe alerta de sucesso (opcional)
         alert('Dados enviados com sucesso!');
 
-        window.location.reload();
-
+        // Redireciona para a página 2 passando o ID como parâmetro na URL
+        window.location.href = `../pesquisaONG/index.html?id=${formDataObj.id}`;
     });
 });
