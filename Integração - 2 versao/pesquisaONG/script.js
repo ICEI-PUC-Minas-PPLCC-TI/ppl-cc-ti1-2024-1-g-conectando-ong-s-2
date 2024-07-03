@@ -27,15 +27,15 @@ function displayOngs(ongs) {
 
   ongs.forEach((ong, index) => {
       const row = `
-          <tr>
-              <td><img src="${ong.logo}" alt="${ong.name} Logo" style="max-width: 100px;"></td>
-              <td><a href="${ong.url}" target="_blank">${ong.name}</a></td>
-              <td><a href="${ong.location.mapUrl}" target="_blank">${ong.location.city}</a></td>
-              <td>${ong.category}</td>
-              <td>${ong.donations.join(', ')}</td>
-              <td><button onclick="deleteOng(${index})">Excluir</button></td>
-          </tr>
-      `;
+    <tr>
+        <td><img src="${ong.logo}" alt="${ong.name} Logo" style="max-width: 100px;"></td>
+        <td><a href="../Trabalho TI pagina ONGs/Lorena.html?id=${ong.id}" target="_blank">${ong.name}</a></td>
+        <td><a href="${ong.location.mapUrl}" target="_blank">${ong.location.city}</a></td>
+        <td>${ong.category}</td>
+        <td>${ong.donations.join(', ')}</td>
+        <td><button onclick="deleteOng(${index})">Excluir</button></td>
+    </tr>
+`;
       tableBody.innerHTML += row;
   });
 }
