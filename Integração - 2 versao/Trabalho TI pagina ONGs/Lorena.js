@@ -1,65 +1,97 @@
 const urlParams = new URLSearchParams(window.location.search);
-const id = parseInt(urlParams.get("id"));
+const id = urlParams.get("id");
 
-// Função para carregar dados do arquivo JSON
-async function loadJSON(url) {
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
+function leDados() {
+    let strDados = localStorage.getItem('db');
+    let objDados = {};
+
+    if (strDados) {
+        objDados = JSON.parse(strDados);
+    } else {
+        objDados = {
+            "ONGS": [
+                {
+                    "id": 1,
+                    "nome": "Ame um Animal",
+                    "sobre": "Nossa ONG tem como objetivo ajudar animais em situação de rua",
+                    "logo": "ong2.jpeg",
+                    "localização": "Rua das Flores, 123, Belo Horizonte, MG",
+                    "horário": "Segundas a sextas das 8h às 18h",
+                    "contato": {
+                        "telefone": "(31) 98457-7640",
+                        "whatsapp": "https://wa.me/553184577640",
+                        "instagram": "@ame_um_animal_ONG",
+                        "email": "email@provedor.com.br"
+                    },
+                    "o_que_doar": ["Ração", "Cobertores", "Brinquedos"],
+                    "outras_formas_de_doar": "#"
+                },
+                {
+                    "id": 2,
+                    "nome": "ONG Doação Amiga",
+                    "sobre": "A ONG Doação Amiga tem como objetivo dar apoio a pessoas em situação de rua.",
+                    "logo": "ong1.jpeg",
+                    "localização": "Avenida dos Amigos, 456, São Paulo, SP",
+                    "horário": "Segundas a sextas das 9h às 17h",
+                    "contato": {
+                        "telefone": "(11) 98765-4321",
+                        "whatsapp": "https://wa.me/5511987654321",
+                        "instagram": "@Doação_Amiga",
+                        "email": "contato@doacaoamiga.com.br"
+                    },
+                    "o_que_doar": ["Roupas", "Alimentos não perecíveis", "Produtos de higiene"],
+                    "outras_formas_de_doar": "#"
+                },
+                {
+                    "id": 3,
+                    "nome": "Amigos dos Animais",
+                    "sobre": "Amigos dos Animais é dedicada ao resgate, tratamento e adoção de animais abandonados, garantindo um lar amoroso e seguro para cada um deles.",
+                    "logo": "ong3.jpeg",
+                    "localização": "Rua dos Amigos, 789, Rio de Janeiro, RJ",
+                    "horário": "Segundas a sextas das 10h às 19h",
+                    "contato": {
+                        "telefone": "(21) 91234-5678",
+                        "whatsapp": "https://wa.me/5521912345678",
+                        "instagram": "@amigos_dos_animais_ong",
+                        "email": "contato@amigosdosanimais.org.br"
+                    },
+                    "o_que_doar": ["Alimentos enlatados para pets", "Caminhas", "Produtos de limpeza"],
+                    "outras_formas_de_doar": "#"
+                }
+            ]
         }
-        return await response.json();
-    } catch (error) {
-        console.error("Erro ao carregar dados:", error);
-        return { ONGS: [] }; // Retorna um objeto vazio se houver erro
     }
+    return objDados;
 }
 
-// Função para ler os dados das ONGs
-async function leDados() {
-    try {
-        const data = await loadJSON('data.json'); // Certifique-se de que o caminho está correto
-        return data;
-    } catch (error) {
-        console.error("Erro ao ler dados das ONGs:", error);
-        return { ONGS: [] }; // Retorna um objeto vazio se houver erro
-    }
-}
-
-// Função para imprimir dados da ONG na página
-async function imprimeDados() {
+function imprimeDados() {
     const logoDaOng = document.querySelector(".Logo img");
     const nomeDaOng = document.querySelector(".sobre h1");
     const descricaoDaOng = document.querySelector(".sobre p");
     const localizaçãoDaOng = document.querySelector(".L li");
-    const horarioOng = document.querySelector(".H li");
+    const horarioOng = document.querySelector(".H li ");
     const telefoneDaOng = document.querySelector(".telefone");
     const whatsappDaOng = document.querySelector(".whatsapp");
     const instaDaOng = document.querySelector(".insta");
     const emailDaOng = document.querySelector(".email");
     const oqDoar = document.querySelector(".doacoes ul");
 
-    let objDados = await leDados();
-    const ong = objDados.ONGS.find(ong => ong.id === id);
+    let objDados = leDados();
+    const ong = objDados.ONGS.find(ong => ong.id == id);
 
-    if (ong) {
-        nomeDaOng.textContent = ong.name;
-        descricaoDaOng.textContent = ong.description;
-        logoDaOng.setAttribute("src", ong.logo);
-        horarioOng.innerHTML += ong.time;
-        localizaçãoDaOng.textContent = `${ong.location.street}, ${ong.location.neighborhood}, ${ong.location.city}`;
-        telefoneDaOng.textContent = ong.contact.phone;
-        whatsappDaOng.setAttribute("href", ong.contact.whatsapp);
-        instaDaOng.setAttribute("href", ong.contact.instagram);
-        emailDaOng.setAttribute("href", ong.contact.email);
-        ong.donations.forEach(item => { oqDoar.innerHTML += `<li><p>${item}</p></li>` 
-        });
-    } else {
-        console.error(`ONG com ID ${id} não encontrada`);
-    }
+    nomeDaOng.textContent = ong.nome;
+    descricaoDaOng.textContent = ong.sobre;
+    logoDaOng.setAttribute("src", ong.logo);
+    horarioOng.innerHTML += ong.horário;
+    localizaçãoDaOng.innerHTML += ong.localização;
+    telefoneDaOng.textContent = ong.contato.telefone;
+    whatsappDaOng.setAttribute("href", ong.contato.whatsapp);
+    instaDaOng.setAttribute("href", ong.contato.instagram);
+    emailDaOng.setAttribute("href", ong.contato.email);
+    ong.o_que_doar.forEach(item => { oqDoar.innerHTML += `<li><p>${item}</p></li>` });
 }
 
-// Funções para gerenciar comentários
+// Funções de comentários
 function salvaComentarios(comentarios) {
     let allComments = leTodosComentarios();
     allComments[id] = comentarios;
@@ -113,13 +145,13 @@ function imprimeComentarios() {
     });
 }
 
-// Evento de carregamento da página
-window.addEventListener('load', async () => {
-    await imprimeDados(); // Carrega e imprime os dados da ONG
-    imprimeComentarios(); // Carrega e imprime os comentários
+// Adiciona evento de carregamento da página para exibir os dados da ONG
+window.addEventListener('load', () => {
+    imprimeDados();
+    imprimeComentarios();
 });
 
-// Evento de envio do formulário de comentários
+// Adiciona evento de envio do formulário de comentários
 document.getElementById('comentarioForm').addEventListener('submit', function (event) {
     event.preventDefault();
 
@@ -127,7 +159,7 @@ document.getElementById('comentarioForm').addEventListener('submit', function (e
     const comentario = document.getElementById('comentario').value;
 
     if (email && comentario) {
-        // Verifica se o email está cadastrado (simulação)
+        // Verificar se o email está cadastrado
         const users = JSON.parse(localStorage.getItem('users')) || [];
         const userExists = users.some(user => user.email === email);
         
@@ -135,7 +167,7 @@ document.getElementById('comentarioForm').addEventListener('submit', function (e
             adicionaComentario(email, comentario);
             imprimeComentarios();
             
-            // Limpa os campos do formulário
+            // Limpar os campos do formulário
             document.getElementById('email').value = '';
             document.getElementById('comentario').value = '';
         } else {
@@ -145,3 +177,6 @@ document.getElementById('comentarioForm').addEventListener('submit', function (e
         alert('Por favor, preencha todos os campos.');
     }
 });
+;
+
+
