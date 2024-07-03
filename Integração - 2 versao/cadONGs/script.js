@@ -46,6 +46,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Armazenar os dados no localStorage como JSON
         localStorage.setItem('formData', JSON.stringify(formDataObj));
+        
+        // Exibe mensagem no console
+        console.log('Dados enviados com sucesso:', formDataObj);
 
         // Exibe alerta de sucesso (opcional)
         alert('Dados enviados com sucesso!');
