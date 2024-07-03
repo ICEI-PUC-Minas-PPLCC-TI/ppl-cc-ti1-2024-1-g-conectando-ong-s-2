@@ -8,15 +8,21 @@ function filterOngs() {
   // Recupera as ONGs do localStorage
   let ongs = JSON.parse(localStorage.getItem('ongs')) || [];
 
-  // Filtra as ONGs com base nos critérios
-  const filteredOngs = ongs.filter(ong => {
-      const fullLocation = `${ong.location.street}, ${ong.location.neighborhood}, ${ong.location.city}`.toLowerCase();
-      return ong.name.toLowerCase().includes(name) &&
-             fullLocation.includes(location) &&
-             ong.donations.some(d => d.toLowerCase().includes(donation)) &&
-             (category === "" || ong.category.toLowerCase().includes(category));
-  });
+ // Filtra as ONGs com base nos critérios
+ const filteredOngs = ongs.filter(ong => {
+  // Certifique-se de verificar se `ong.location` não é undefined antes de acessar `ong.location.street`
+  if (ong.location) {
+    const fullLocation = `${ong.location.street}, ${ong.location.neighborhood}, ${ong.location.city}`.toLowerCase();
+    return ong.name.toLowerCase().includes(name) &&
+           fullLocation.includes(location) &&
+           ong.donations.some(d => d.toLowerCase().includes(donation)) &&
+           (category === "" || ong.category.toLowerCase().includes(category));
+  } else {
+    return false; // Se `ong.location` for undefined, não inclui essa ONG no filtro
+  }
+});
 
+  // Chama a função para exibir as ONGs filtradas na tabela
   displayOngs(filteredOngs);
 }
 
