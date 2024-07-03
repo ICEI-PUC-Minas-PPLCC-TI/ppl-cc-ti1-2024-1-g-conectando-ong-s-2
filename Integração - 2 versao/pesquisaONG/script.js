@@ -8,19 +8,18 @@ function filterOngs() {
   // Recupera as ONGs do localStorage
   let ongs = JSON.parse(localStorage.getItem('ongs')) || [];
 
- // Filtra as ONGs com base nos critérios
- const filteredOngs = ongs.filter(ong => {
-  // Certifique-se de verificar se `ong.location` não é undefined antes de acessar `ong.location.street`
-  if (ong.location) {
-    const fullLocation = `${ong.location.street}, ${ong.location.neighborhood}, ${ong.location.city}`.toLowerCase();
-    return ong.name.toLowerCase().includes(name) &&
-           fullLocation.includes(location) &&
-           ong.donations.some(d => d.toLowerCase().includes(donation)) &&
-           (category === "" || ong.category.toLowerCase().includes(category));
-  } else {
-    return false; // Se `ong.location` for undefined, não inclui essa ONG no filtro
-  }
-});
+  // Filtra as ONGs com base nos critérios
+  const filteredOngs = ongs.filter(ong => {
+    if (ong.location) {
+      const fullLocation = `${ong.location.street}, ${ong.location.neighborhood}, ${ong.location.city}`.toLowerCase();
+      return ong.name.toLowerCase().includes(name) &&
+             fullLocation.includes(location) &&
+             ong.donations.some(d => d.toLowerCase().includes(donation)) &&
+             (category === "" || ong.category.toLowerCase().includes(category));
+    } else {
+      return false; // Se `ong.location` for undefined, não inclui essa ONG no filtro
+    }
+  });
 
   // Chama a função para exibir as ONGs filtradas na tabela
   displayOngs(filteredOngs);
@@ -32,17 +31,17 @@ function displayOngs(ongs) {
   tableBody.innerHTML = ""; // Limpa a tabela antes de adicionar novos dados
 
   ongs.forEach((ong, index) => {
-      const row = `
-    <tr>
+    const row = `
+      <tr>
         <td><img src="${ong.logo}" alt="${ong.name} Logo" style="max-width: 100px;"></td>
         <td><a href="../Trabalho TI pagina ONGs/Lorena.html?id=${ong.id}" target="_blank">${ong.name}</a></td>
         <td><a href="${ong.location.mapUrl}" target="_blank">${ong.location.city}</a></td>
         <td>${ong.category}</td>
         <td>${ong.donations.join(', ')}</td>
         <td><button onclick="deleteOng(${index})">Excluir</button></td>
-    </tr>
-`;
-      tableBody.innerHTML += row;
+      </tr>
+    `;
+    tableBody.innerHTML += row;
   });
 }
 
@@ -67,32 +66,33 @@ function init() {
   const formData = JSON.parse(localStorage.getItem('formData'));
 
   if (formData) {
-      // Transforma os dados capturados em um objeto que representa uma ONG
-      const newOng = {
-          name: formData.name,
-          category: formData.category,
-          logo: formData.logoFile, // Aqui você precisa lidar com o arquivo de logo capturado
-          location: {
-              city: formData.city,
-              neighborhood: formData.neighborhood,
-              street: formData.street,
-              mapUrl: formData.mapUrl
-          },
-          time: formData.time,
-          donations: formData.donations.split(','), // Transforma a string de doações em um array
-          pix: formData.pix,
-          caixaPostal: formData.caixaPostal,
-          contact: formData.contact,
-          whatsapp: formData.whatsapp,
-          email: formData.email,
-          instagram: formData.instagram,
-          description: formData.description
-      };
+    // Transforma os dados capturados em um objeto que representa uma ONG
+    const newOng = {
+      id: formData.id, // Mantém o ID gerado anteriormente
+      name: formData.name,
+      category: formData.category,
+      logo: formData.logoFile, // Aqui você precisa lidar com o arquivo de logo capturado
+      location: {
+        city: formData.city,
+        neighborhood: formData.neighborhood,
+        street: formData.street,
+        mapUrl: formData.mapUrl
+      },
+      time: formData.time,
+      donations: formData.donations.split(','), // Transforma a string de doações em um array
+      pix: formData.pix,
+      caixaPostal: formData.caixa_postal,
+      contact: formData.contact,
+      whatsapp: formData.whatsapp,
+      email: formData.email,
+      instagram: formData.instagram,
+      description: formData.description
+    };
 
-      // Adiciona a nova ONG capturada aos dados existentes no localStorage
-      let ongs = JSON.parse(localStorage.getItem('ongs')) || [];
-      ongs.push(newOng);
-      localStorage.setItem('ongs', JSON.stringify(ongs));
+    // Adiciona a nova ONG capturada aos dados existentes no localStorage
+    let ongs = JSON.parse(localStorage.getItem('ongs')) || [];
+    ongs.push(newOng);
+    localStorage.setItem('ongs', JSON.stringify(ongs));
   }
 
   // Adiciona eventos de input e change para os campos de filtro
@@ -106,8 +106,8 @@ function init() {
 
   // Adiciona o evento de clique para mostrar/esconder os filtros
   document.getElementById("filterToggle").addEventListener("click", function() {
-      const filterContainer = document.getElementById("filterContainer");
-      filterContainer.style.display = filterContainer.style.display === "none" ? "block" : "none";
+    const filterContainer = document.getElementById("filterContainer");
+    filterContainer.style.display = filterContainer.style.display === "none" ? "block" : "none";
   });
 }
 
