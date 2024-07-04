@@ -15,7 +15,7 @@ function checkData(){
         })[0]
         localStorage.getItem("name", current_user.name);
         localStorage.getItem("email", current_user.email);
-        window.location.href="perfil.html";
+        /*window.location.href="perfil.html";*/
         
     }else{
         alert("Erro ao realizar o login");
