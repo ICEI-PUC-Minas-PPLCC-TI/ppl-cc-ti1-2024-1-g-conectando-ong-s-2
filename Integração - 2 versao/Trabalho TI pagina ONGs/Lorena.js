@@ -31,7 +31,7 @@ function imprimeDados() {
     nomeDaOng.textContent = ong.name;
     descricaoDaOng.textContent = ong.description;
     logoDaOng.setAttribute("src", ong.logo);
-    localizacaoDaOng.textContent = `Localização: ${ong.street}, ${ong.neighborhood}, ${ong.city}`;
+    localizacaoDaOng.textContent = `Localização: ${ong.location.street}, ${ong.location.neighborhood}, ${ong.location.city}`;
     horarioOng.textContent = `Horário de Funcionamento: ${ong.time}`;
     telefoneDaOng.textContent = ong.contact;
     whatsappDaOng.href = ong.whatsapp;
