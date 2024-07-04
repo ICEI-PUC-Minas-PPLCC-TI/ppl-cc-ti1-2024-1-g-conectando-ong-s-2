@@ -1,10 +1,11 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const form = document.querySelector('form');
-    const header = document.querySelector("header");
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('form');
+    const estadoSelect = document.getElementById('estado');
+    const cidadeSelect = document.getElementById('cidade');
+    const areaInteresseSelect = document.getElementById('area_interesse');
+    const experienciaSelect = document.getElementById('experiencia');
 
-
-    // JSON com estados e cidades
-        const data = {
+    const data = {
         "estados": [
             {
                 "nome": "São Paulo",
@@ -12,14 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 "cidades": [
                     "São Paulo",
                     "Campinas",
-                    "Santos",
-                    "Sorocaba",
-                    "São José dos Campos",
-                    "Ribeirão Preto",
-                    "Guarulhos",
-                    "Barueri",
-                    "São Bernardo do Campo",
-                    "Piracicaba"
+                    "Santos"
                 ]
             },
             {
@@ -28,14 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 "cidades": [
                     "Rio de Janeiro",
                     "Niterói",
-                    "Petrópolis",
-                    "Duque de Caxias",
-                    "Nova Iguaçu",
-                    "Cabo Frio",
-                    "Campos dos Goytacazes",
-                    "Volta Redonda",
-                    "Teresópolis",
-                    "Angra dos Reis"
+                    "Petrópolis"
                 ]
             },
             {
@@ -43,15 +30,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 "sigla": "MG",
                 "cidades": [
                     "Belo Horizonte",
-                    "Uberlândia",
-                    "Ouro Preto",
                     "Contagem",
-                    "Juiz de Fora",
-                    "Montes Claros",
-                    "Ipatinga",
-                    "Uberaba",
-                    "Betim",
-                    "Governador Valadares"
+                    "Betim"
                 ]
             },
             {
@@ -60,21 +40,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 "cidades": [
                     "Curitiba",
                     "Londrina",
-                    "Maringá",
-                    "Ponta Grossa",
-                    "Cascavel",
-                    "Foz do Iguaçu",
-                    "São José dos Pinhais",
-                    "Guarapuava",
-                    "Paranaguá",
-                    "Colombo"
+                    "Maringá"
                 ]
             }
         ]
-    }; 
-
-    const estadoSelect = document.getElementById('estado');
-    const cidadeSelect = document.getElementById('cidade');
+    };
 
     // Preenche o select de estados
     data.estados.forEach(function(estado) {
@@ -108,32 +78,54 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    form.addEventListener('submit', async function(event) {
+    // Adiciona um event listener para o evento "submit" do formulário
+    form.addEventListener('submit', function(event) {
+        // Previne o comportamento padrão de envio do formulário
         event.preventDefault();
         
-        const formData = new FormData(form);
-
         // Captura dos dados do formulário
-        const nomeVoluntario = document.getElementById('InputNome').value;
-        const email = document.getElementById('InputEmail').value;
-        const fotoPessoal = document.querySelector('input[type="file"]').value;
-        const telefone = document.querySelector('input[type="telefone"]').value;
-        const estado = document.getElementById('estado').value;
-        const cidade = document.getElementById('cidade').value;
-        const sobreVoluntario = document.querySelector('textarea[name="sobreVoluntario"]').value;
-        
-        // Exemplo de como mostrar os dados capturados
-        console.log('Nome:', nomeVoluntario);
-        console.log('Email:', email);
-        console.log('Foto pessoal:', fotoPessoal);
-        console.log('Telefone para contato:', telefone);
-        console.log('Estado:', estado);
-        console.log('Cidade:', cidade);
-        console.log('Experiências do voluntário:', sobreVoluntario);
-        
+        const nomeVoluntario = document.getElementById('InputNome').value.trim();
+        const email = document.getElementById('InputEmail').value.trim();
+        const telefone = document.getElementById('InputTelefone').value.trim();
+        const estado = estadoSelect.value;
+        const cidade = cidadeSelect.value;
+        const areaInteresse = areaInteresseSelect.value;
+        const experiencia = experienciaSelect.value;
+        const sobreVoluntario = document.querySelector('textarea[name="sobreVoluntario"]').value.trim();
+      
+        // Validação simples dos campos
+        if (!nomeVoluntario || !email || !telefone || !estado || !cidade || !areaInteresse || !experiencia || !sobreVoluntario) {
+            alert('Por favor, preencha todos os campos do formulário.');
+            return;
+        }
+
+        // Objeto para armazenar os dados capturados
+        const voluntarioData = {
+            nome: nomeVoluntario,
+            email: email,
+            telefone: telefone,
+            estado: estado,
+            cidade: cidade,
+            area_interesse: areaInteresse,
+            experiencia: experiencia,
+            sobre: sobreVoluntario
+        };
+
+        // Armazenar os dados no localStorage
+        let voluntarios = obterVoluntariosDoLocalStorage();
+        voluntarios.push(voluntarioData);
+        localStorage.setItem('voluntarios', JSON.stringify(voluntarios));
+
+        // Exibe um alerta de sucesso
         alert('Dados enviados com sucesso!');
 
-        // Recarrega a página
-        window.location.reload();
+        // Limpa o formulário após o envio
+        form.reset();
     });
+
+    function obterVoluntariosDoLocalStorage() {
+        const voluntariosStr = localStorage.getItem('voluntarios');
+        return voluntariosStr ? JSON.parse(voluntariosStr) : [];
+    }
+
 });
