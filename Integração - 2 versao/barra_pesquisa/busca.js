@@ -78,3 +78,87 @@ function exibirResultadosBusca(voluntarios) {
         listaVoluntarios.appendChild(itemLista);
     });
 }
+
+/* document.addEventListener('DOMContentLoaded', function() {
+    const botaoFiltro = document.getElementById('botao-filtro');
+    const form = document.getElementById('form-pesquisa');
+    const listaVoluntarios = document.getElementById('lista-voluntarios');
+    const areaInteresseSelect = document.getElementById('filtro-interesse');
+    const cidadeSelect = document.getElementById('filtro-cidade');
+    const experienciaSelect = document.getElementById('filtro-experiencia');
+
+    if (botaoFiltro) {
+        botaoFiltro.addEventListener('click', function() {
+            var filtros = document.getElementById('filtros');
+            if (filtros.style.display === 'flex') {
+                filtros.style.display = 'none';
+            } else {
+                filtros.style.display = 'flex';
+            }
+        });
+    }
+
+    if (form) {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita o envio do formulário
+            realizarBusca();
+        });
+    }
+
+    function realizarBusca() {
+        const termoBusca = document.getElementById('campo-pesquisa').value.trim();
+        const areaInteresseSelecionada = areaInteresseSelect.value;
+        const cidadeSelecionada = cidadeSelect.value;
+        const experienciaSelecionada = experienciaSelect.value;
+
+        const voluntarios = obterVoluntariosDoLocalStorage();
+        const voluntariosFiltrados = filtrarVoluntarios(voluntarios, termoBusca, areaInteresseSelecionada, cidadeSelecionada, experienciaSelecionada);
+        exibirResultadosBusca(voluntariosFiltrados);
+    }
+
+    function obterVoluntariosDoLocalStorage() {
+        const voluntariosStr = localStorage.getItem('voluntarios');
+        return voluntariosStr ? JSON.parse(voluntariosStr) : [];
+    }
+
+    function filtrarVoluntarios(voluntarios, termoBusca, areaInteresse, cidadeSelecionada, experienciaSelecionada) {
+        return voluntarios.filter(voluntario => {
+            const areaInteresseLowerCase = (voluntario.areaInteresse || '').toLowerCase();
+            const cidadeLowerCase = (voluntario.cidade || '').toLowerCase();
+            const experienciaLowerCase = (voluntario.experiencia || '').toLowerCase();
+            const nomeVoluntarioLowerCase = (voluntario.nome || '').toLowerCase();
+
+            const termoBuscaLowerCase = termoBusca.toLowerCase();
+
+            return (termoBusca === '' || 
+                    nomeVoluntarioLowerCase.includes(termoBuscaLowerCase) || 
+                    cidadeLowerCase.includes(termoBuscaLowerCase)) &&
+                    (areaInteresse === '' || areaInteresseLowerCase === areaInteresse) &&
+                    (cidadeSelecionada === '' || cidadeLowerCase === cidadeSelecionada) &&
+                    (experienciaSelecionada === '' || experienciaLowerCase === experienciaSelecionada);
+        });
+    }
+
+    function exibirResultadosBusca(voluntarios) {
+        listaVoluntarios.innerHTML = ''; // Limpa a lista antes de exibir novos resultados
+
+        if (voluntarios.length === 0) {
+            listaVoluntarios.innerHTML = '<li>Nenhum voluntário encontrado.</li>';
+        } else {
+            voluntarios.forEach(voluntario => {
+                const itemLista = document.createElement('li');
+                itemLista.classList.add('perfil'); // Adiciona classe para estilização
+                itemLista.innerHTML = `
+                    <h3>${voluntario.nome}</h3>
+                    <p>${voluntario.cidade} - ${voluntario.estado}</p>
+                    <p>Sobre o voluntário: ${voluntario.sobre}</p>
+                `;
+                listaVoluntarios.appendChild(itemLista);
+            });
+        }
+    }
+
+    // Chamada inicial para exibir os voluntários ao carregar a página
+    realizarBusca();
+});
+*/
